@@ -31,7 +31,7 @@
 `
 ### 检查
 ``powershell
-cd .
+cd E:\download\claude\CodeX\grok-free-register-main
 .\.venv\Scripts\python.exe -m cloakbrowser info --quick
 `
 `
@@ -64,7 +64,7 @@ ADMIN_PASS=your_password
 ## 推荐 Windows 全链路
 `
 ``powershell
-cd .
+cd E:\download\claude\CodeX\grok-free-register-main
 `
 # 统一入口
 .\start-all-windows.ps1 status
@@ -87,6 +87,6 @@ cd .
 `
 ## 注意
 - grok2api 需健康: http://127.0.0.1:8000/healthz
-- Path B 如需代理，请自行设置 HTTP_PROXY/HTTPS_PROXY（代码不强制本机端口）
+- Path B 依赖代理（默认 http://127.0.0.1:7897）
 - 导入器已 token 复用 + 429 退避，避免 admin 登录限流
 - 自建邮箱 WEBHOOK_URL 必须是域名，不能裸 IP

@@ -3,7 +3,7 @@
 ## Entry
 
 ```powershell
-cd .
+cd E:\download\claude\CodeX\grok-free-register-main
 .\start-full-to-grok2api.ps1
 ```
 
@@ -34,7 +34,7 @@ import_authenticated_to_grok2api.py
 
 ## Requirements
 
-- Proxy is optional; set HTTP_PROXY/HTTPS_PROXY yourself if needed
+- Proxy (default `http://127.0.0.1:7897`) for register + browser
 - grok2api healthy on `http://127.0.0.1:8000/healthz`
 - `keys/.credentials` with admin user/pass
 - `.venv` with project deps + Playwright/Chromium for Path B

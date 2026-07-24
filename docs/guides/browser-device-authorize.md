@@ -12,7 +12,7 @@ xAI 已把 Device OAuth **批准 UI** 放到 `accounts.x.ai`。
 ## Path A：只做浏览器批准
 
 ```powershell
-cd .
+cd E:\download\claude\CodeX\grok-free-register-main
 .venv\Scripts\python.exe scripts\browser_device_authorize.py `
   --source-file auth-local\source-snapshot.jsonl `
   --source-index 0 `

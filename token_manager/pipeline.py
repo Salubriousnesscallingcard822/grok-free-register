@@ -201,7 +201,8 @@ class PipelineController:
 
     def _base_env(self) -> dict[str, str]:
         env = dict(os.environ)
-                env.setdefault("HTTPS_PROXY", "")
+        env.setdefault("HTTP_PROXY", "http://127.0.0.1:7897")
+        env.setdefault("HTTPS_PROXY", "http://127.0.0.1:7897")
         cloak_dir = self.project_root / ".cloakbrowser"
         env["CLOAKBROWSER_CACHE_DIR"] = str(cloak_dir)
         env["PYTHONUNBUFFERED"] = "1"
@@ -219,7 +220,7 @@ class PipelineController:
             candidates = sorted(cloak_dir.glob("chromium-*/chrome.exe"))
             if candidates:
                 env["XAI_ENROLLER_BROWSER_EXECUTABLE"] = str(candidates[-1])
-        env.setdefault("ALL_PROXY", env.get("HTTPS_PROXY") or env.get("HTTP_PROXY") or "")
+        env.setdefault("ALL_PROXY", env.get("HTTPS_PROXY") or env.get("HTTP_PROXY") or "http://127.0.0.1:7897")
         env.setdefault("XAI_ENROLLER_TIMEOUT_SEC", "240")
         env.setdefault("XAI_ENROLLER_POLL_SEC", "3")
         return env

@@ -43,15 +43,13 @@ function Get-ProxyUrl {
       if ($line -match '^\s*HTTP_PROXY\s*=\s*(.+)\s*$') { return $Matches[1].Trim().Trim('"') }
     }
   }
-  return ""
+  return "http://127.0.0.1:7897"
 }
 
 $proxyUrl = Get-ProxyUrl
-if ($proxyUrl) {
-  $env:HTTP_PROXY = $proxyUrl
-  $env:HTTPS_PROXY = $proxyUrl
-  $env:ALL_PROXY = $proxyUrl
-}
+$env:HTTP_PROXY = $proxyUrl
+$env:HTTPS_PROXY = $proxyUrl
+$env:ALL_PROXY = $proxyUrl
 $env:CLOAKBROWSER_CACHE_DIR = Join-Path $PSScriptRoot ".cloakbrowser"
 
 $py = Join-Path $PSScriptRoot ".venv\Scripts\python.exe"

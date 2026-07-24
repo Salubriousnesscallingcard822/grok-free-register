@@ -1,8 +1,8 @@
 # Local custom-domain email receiver for EMAIL_MODE=custom
-# Domain: example.com
+# Domain: yanqiudesu.top
 param(
   [int]$Port = 8088,
-  [string]$Domain = "example.com",
+  [string]$Domain = "yanqiudesu.top",
   [switch]$Foreground
 )
 $ErrorActionPreference = "Stop"

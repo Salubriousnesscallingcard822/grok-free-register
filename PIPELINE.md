@@ -10,7 +10,7 @@
 
 ## 用法
 ```powershell
-cd .
+cd E:\download\claude\CodeX\grok-free-register-main
 .\start-pipeline.ps1 status
 .\start-pipeline.ps1 all
 .\start-pipeline.ps1 register -RegisterTarget 50
@@ -35,7 +35,7 @@ Authenticated files land in `auth-local/authenticated/xai-*.json`.
 ## One-click: register → browser OAuth → grok2api
 
 ```powershell
-cd .
+cd E:\download\claude\CodeX\grok-free-register-main
 
 # Full chain (default)
 .\start-full-to-grok2api.ps1

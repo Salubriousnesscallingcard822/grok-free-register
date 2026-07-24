@@ -26,8 +26,8 @@ def run_ps(script: str, args=None, background: bool = False) -> int:
     if args:
         cmd.extend(args)
     env = os.environ.copy()
-        if env.get("HTTP_PROXY") and not env.get("HTTPS_PROXY"):
-        env["HTTPS_PROXY"] = env["HTTP_PROXY"]
+    env.setdefault("HTTP_PROXY", "http://127.0.0.1:7897")
+    env.setdefault("HTTPS_PROXY", env["HTTP_PROXY"])
     env["CLOAKBROWSER_CACHE_DIR"] = str(ROOT / ".cloakbrowser")
     if background:
         subprocess.Popen(cmd, cwd=str(ROOT), env=env)

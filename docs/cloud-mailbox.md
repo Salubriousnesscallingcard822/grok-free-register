@@ -17,8 +17,8 @@ Verified working cloud mailbox provider:
 ```env
 EMAIL_MODE=tempmail
 TEMPMAIL_PROVIDER_ORDER=lol,mailtm
-HTTP_PROXY=http://127.0.0.1:YOUR_PROXY_PORT
-HTTPS_PROXY=http://127.0.0.1:YOUR_PROXY_PORT
+HTTP_PROXY=http://127.0.0.1:7897
+HTTPS_PROXY=http://127.0.0.1:7897
 ```
 
 Code prefers `tempmail.lol` first, then mail.tm-compatible providers as fallback.
@@ -28,8 +28,8 @@ Code prefers `tempmail.lol` first, then mail.tm-compatible providers as fallback
 ```powershell
 # local
 $env:MAILBOX_BROKER_PORT=8090
-$env:HTTP_PROXY=http://127.0.0.1:YOUR_PROXY_PORT
-$env:HTTPS_PROXY=http://127.0.0.1:YOUR_PROXY_PORT
+$env:HTTP_PROXY=http://127.0.0.1:7897
+$env:HTTPS_PROXY=http://127.0.0.1:7897
 python ops/cloud_mailbox_broker.py
 ```
 
@@ -49,4 +49,4 @@ Still the ideal long-run path:
 4. `EMAIL_MODE=custom` + `EMAIL_DOMAIN=...` + `EMAIL_API=...`
 
 Blocked currently by missing Cloudflare API token / Email Routing domain credentials.
-Domain ecosystem present: `example.com` / `node.example.com` (used for KeyHub relay, not Email Routing yet).
+Domain ecosystem present: `kdns.fr` / `node.yanqiudesu.kdns.fr` (used for KeyHub relay, not Email Routing yet).

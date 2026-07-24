@@ -31,7 +31,7 @@ def _requests_proxies():
         or (os.environ.get("https_proxy") or "").strip()
         or (os.environ.get("HTTP_PROXY") or "").strip()
         or (os.environ.get("http_proxy") or "").strip()
-        or ""
+        or "http://127.0.0.1:7897"
     )
     return {"http": proxy, "https": proxy} if proxy else None
 
@@ -377,7 +377,7 @@ def _browser_proxy_settings():
         or (os.environ.get("http_proxy") or "").strip()
         or (os.environ.get("ALL_PROXY") or "").strip()
         or (os.environ.get("all_proxy") or "").strip()
-        or ""
+        or "http://127.0.0.1:7897"
     )
     return {"server": proxy} if proxy else None
 

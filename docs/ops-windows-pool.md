@@ -7,12 +7,12 @@
 4. Azure keypool + KeyHub gateway for unified key consumption
 
 ## Local paths
-- project: `.`
+- project: `E:\download\claude\CodeX\grok-free-register-main`
 - raw pool: `keys\accounts.txt`, `keys\auth-sessions.jsonl`
 - auth pool: `auth-local\authenticated\`
 - claimed pool: `auth-local\claimed\<batch-id>\`
 - unified export: `auth-local\export\`
-- Azure keypool: `/opt/grok-keypool` on `YOUR_VPS_IP`
+- Azure keypool: `/opt/grok-keypool` on `70.153.144.122`
 
 ## 1. Build number pool (raw accounts)
 ```powershell
@@ -21,7 +21,7 @@ powershell -ExecutionPolicy Bypass -File .\start-windows.ps1 --target 0
 powershell -ExecutionPolicy Bypass -File .\start-windows.ps1 --target 1
 ```
 Requires:
-- local proxy via user-configured HTTP_PROXY/HTTPS_PROXY
+- local proxy `http://127.0.0.1:7897`
 - `EMAIL_MODE=tempmail` and `TEMPMAIL_PROVIDER_ORDER=lol,mailtm`
 - custom domain email for long-run scale
 
@@ -58,8 +58,8 @@ powershell -ExecutionPolicy Bypass -File .\ops\export-unified-keys.ps1 -Source c
 
 Push to Azure keypool:
 ```powershell
-powershell -ExecutionPolicy Bypass -File PATH/TO/YOUR/azure-vps/push-keys-to-azure.ps1 -Source export
-powershell -ExecutionPolicy Bypass -File PATH/TO/YOUR/azure-vps/push-keys-to-azure.ps1 -Source authenticated
+powershell -ExecutionPolicy Bypass -File E:\download\claude\CodeX\.tools\azure-vps\push-keys-to-azure.ps1 -Source export
+powershell -ExecutionPolicy Bypass -File E:\download\claude\CodeX\.tools\azure-vps\push-keys-to-azure.ps1 -Source authenticated
 ```
 
 ## 5. Server topology
@@ -70,8 +70,8 @@ Windows local
   export-unified-keys.ps1 -> auth-local/export/*.jsonl
   push-keys-to-azure.ps1 -> Azure /opt/grok-keypool
 
-Your VPS (YOUR_VPS_IP)
-  KeyHub gateway: https://node.example.com/v1
+Azure yanqiudesu-vps (70.153.144.122)
+  KeyHub gateway: https://node.yanqiudesu.kdns.fr/v1
   keypool store: /opt/grok-keypool
   mailbox broker: :8090 (tempmail.lol wrapper)
 ```
@@ -81,8 +81,8 @@ Do **not** put CloakBrowser register on the 1GB Azure VM.
 ## 6. Status commands
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\ops\pool-status.ps1
-powershell -ExecutionPolicy Bypass -File PATH/TO/YOUR/azure-vps/status-all.ps1
-ssh -i PATH_TO_YOUR_SSH_KEY USER@YOUR_VPS_IP "sudo /opt/grok-keypool/bin/status.sh"
+powershell -ExecutionPolicy Bypass -File E:\download\claude\CodeX\.tools\azure-vps\status-all.ps1
+ssh -i E:\download\claude\CodeX\.tools\azure-vps\yanqiudesu_ed25519 azureuser@70.153.144.122 "sudo /opt/grok-keypool/bin/status.sh"
 ```
 
 ## 7. Grok Tool (KeyHub-style manager)

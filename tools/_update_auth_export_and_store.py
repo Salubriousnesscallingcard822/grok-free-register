@@ -5,7 +5,7 @@ import hmac
 import base64
 from datetime import datetime, timezone
 
-root = Path(r".")
+root = Path(r"E:\download\claude\CodeX\grok-free-register-main")
 
 # ---------- 1) export helper used by scripts ----------
 export_mod = root / "scripts" / "export_authenticated_json.py"
@@ -303,7 +303,7 @@ auth-local/authenticated/xai-<hmac16>.json
 
 ```powershell
 .venv\\Scripts\\python.exe scripts\\export_authenticated_json.py `
-  --from-json ./pathb_once.json
+  --from-json E:\\download\\claude\\IC_Free_Register\\output\\logs\\pathb_once.json
 ```
 
 ### 从 jsonl 批量导入

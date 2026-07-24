@@ -5,7 +5,7 @@ Cloudflare Email Routing -> Worker -> POST /webhook -> register polls GET /check
 Usage:
   .\.venv\Scripts\python.exe -m grok_register.email_server
   # or
-  .\.venv\Scripts\python.exe grok_register\email_server.py --domain example.com --port 8088
+  .\.venv\Scripts\python.exe grok_register\email_server.py --domain yanqiudesu.top --port 8088
 """
 from __future__ import annotations
 

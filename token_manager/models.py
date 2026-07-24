@@ -106,7 +106,7 @@ class ManagerConfig:
     upstream_base: str = "https://cli-chat-proxy.grok.com/v1"
     token_endpoint: str = "https://auth.x.ai/oauth2/token"
     client_id: str = "b1a00492-073a-47ea-816f-4c329264a828"
-    proxy_url: str | None = ""
+    proxy_url: str | None = "http://127.0.0.1:7897"
     free_units_per_account: int = 100
     refresh_skew_seconds: int = 300
     request_timeout_seconds: float = 120.0

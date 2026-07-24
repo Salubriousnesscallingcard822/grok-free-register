@@ -1,7 +1,7 @@
 {
   "mode": "balanced",
   "applied_at": "2026-07-23T17:05:20",
-  "backup": "./ops/capacity-backups/.env.bak-example",
+  "backup": "E:\\download\\claude\\CodeX\\grok-free-register-main\\ops\\capacity-backups\\.env.bak-20260723-170520",
   "profile": {
     "PHYSICAL_CAP": "6",
     "PHYSICAL_PER_CPU": "2",

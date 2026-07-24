@@ -24,7 +24,7 @@ def _env_proxy_url():
         value = (os.environ.get(key) or "").strip()
         if value:
             return value
-    return ""
+    return "http://127.0.0.1:7897"
 
 
 def _playwright_proxy_settings():

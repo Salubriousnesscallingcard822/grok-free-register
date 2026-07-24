@@ -708,7 +708,7 @@ def build_default_config(project_root: Path | None = None) -> ManagerConfig:
     proxy = (
         os.environ.get("HTTPS_PROXY")
         or os.environ.get("HTTP_PROXY")
-        or ""
+        or "http://127.0.0.1:7897"
     )
     if "TOKEN_MANAGER_PROXY" in os.environ:
         proxy = os.environ.get("TOKEN_MANAGER_PROXY") or None

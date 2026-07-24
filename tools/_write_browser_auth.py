@@ -1,5 +1,5 @@
 ﻿from pathlib import Path
-root = Path(r".")
+root = Path(r"E:\download\claude\CodeX\grok-free-register-main")
 
 # 1) Fix playwright proxy credential parsing
 executors = root / "xai_enroller" / "executors.py"

@@ -314,7 +314,7 @@ auth-local/authenticated/
 ## 一键启动（注册 → 认证 → 扫入 grok2api）
 
 ```powershell
-cd .
+cd E:\download\claude\CodeX\grok-free-register-main
 .\start-full-to-grok2api.ps1
 ```
 
@@ -346,7 +346,7 @@ Recent features are now first-class in this repo:
 ### Quick commands
 
 `powershell
-cd .
+cd E:\download\claude\CodeX\grok-free-register-main
 .\start-all-windows.cmd status
 .\start-all-windows.cmd up
 .\start-full-to-grok2api.ps1

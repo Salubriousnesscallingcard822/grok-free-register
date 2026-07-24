@@ -1,33 +1,40 @@
-﻿__pycache__/
-*.pyc
+# secrets / local runtime
 .env
 .env.*
 !.env.example
 keys/
 auth-local/
-.cloakbrowser/
-*.log
-logs/
-*.bak
-.venv/
-.setup.lock/
-.DS_Store
-.pytest_cache/
-xai-enroller-ledger.db*
-tmp_*.py
-*.tmp
 .credentials
 keys/.credentials
+
+# browser binary cache
+.cloakbrowser/
+
+# python / build
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.setup.lock/
 dist/
 build/
 wheels/
 portable/
 agent-dispatch/
+*.log
+logs/
+history/
+*.tmp
+tmp_*.py
+*.bak
 *.db
 *.sqlite
 *.sqlite3
 GrokTool.spec
 pip-*.log
+.DS_Store
+
+# cloudflare local
 cloudflare/mail-worker/node_modules/
 cloudflare/mail-worker/.wrangler/
 cloudflare/mailhook-tunnel.yml

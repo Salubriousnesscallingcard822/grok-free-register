@@ -23,7 +23,7 @@ auth-local/authenticated/xai-<hmac16>.json
 
 ```powershell
 .venv\Scripts\python.exe scripts\export_authenticated_json.py `
-  --from-json .\output\logs\pathb_once.json
+  --from-json E:\download\claude\IC_Free_Register\output\logs\pathb_once.json
 ```
 
 ### 从 jsonl 批量导入

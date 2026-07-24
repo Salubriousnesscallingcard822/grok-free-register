@@ -1,4 +1,4 @@
-# 自建临时邮箱：example.com
+# 自建临时邮箱：yanqiudesu.top
 
 ## 链路
 xAI -> CF Email Routing catch-all -> Worker -> https://mailhook.YOUR_DOMAIN/webhook -> 本机 :8088 -> register custom
@@ -14,7 +14,7 @@ xAI -> CF Email Routing catch-all -> Worker -> https://mailhook.YOUR_DOMAIN/webh
 1. 域名 Active + Email Routing 开启 + MX 正确
 2. 部署 Worker:
 ```powershell
-cd .\\cloudflare\\mail-worker
+cd E:\\download\\claude\\CodeX\\grok-free-register-main\\cloudflare\\mail-worker
 npm install
 npx wrangler login
 npx wrangler deploy
@@ -23,7 +23,7 @@ npx wrangler secret put WEBHOOK_URL
 npx wrangler secret put WEBHOOK_TOKEN
 # paste token above
 ```
-3. Catch-all -> Send to Worker `your-mail-webhook`
+3. Catch-all -> Send to Worker `yanqiudesu-mail-webhook`
 4. 隧道:
 ```powershell
 cloudflared tunnel login
@@ -37,15 +37,15 @@ cloudflared tunnel route dns your-mailhook-tunnel mailhook.YOUR_DOMAIN
 ## 注册机 .env
 ```
 EMAIL_MODE=custom
-EMAIL_DOMAIN=example.com
+EMAIL_DOMAIN=yanqiudesu.top
 EMAIL_API=http://127.0.0.1:8088
 ```
 
 ## 验收
 1. http://127.0.0.1:8088/health
 2. https://mailhook.YOUR_DOMAIN/health
-3. 发信 any@example.com
+3. 发信 any@yanqiudesu.top
 4. logs/email-server.out.log 有 code
-5. /check/any@example.com
+5. /check/any@yanqiudesu.top
 
 注意: WEBHOOK_URL 不能用裸 IP。

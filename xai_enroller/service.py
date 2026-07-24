@@ -19,7 +19,7 @@ def build_http_client(timeout=60.0):
         or os.environ.get("http_proxy")
         or os.environ.get("ALL_PROXY")
         or os.environ.get("all_proxy")
-        or ""
+        or "http://127.0.0.1:7897"
     )
     timeout_cfg = httpx.Timeout(
         timeout=float(timeout),

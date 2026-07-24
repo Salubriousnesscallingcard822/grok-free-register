@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Import auth-local/authenticated/xai-*.json into local grok2api (Build provider).
 
-Mirrors the phone pack importer + local grok-import/import_accounts.py:
+Mirrors the phone pack importer + E:\\download\\claude\\CodeX\\grok-import\\import_accounts.py:
   1) POST /api/admin/v1/auth/login
   2) POST /api/admin/v1/accounts/import  (multipart files=)
   3) parse SSE data lines for created/updated stats
@@ -97,7 +97,7 @@ def resolve_credentials(user: str | None, password: str | None, cred_file: str |
             ROOT / "keys" / ".credentials",
             ROOT / ".credentials",
             ROOT.parent / "grok-import" / ".credentials",
-            Path(r"./grok-import\.credentials"),
+            Path(r"E:\download\claude\CodeX\grok-import\.credentials"),
         ]
     )
     for p in candidates:

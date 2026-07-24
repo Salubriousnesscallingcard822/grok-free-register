@@ -1,8 +1,8 @@
 ﻿// Cloudflare Email Worker -> POST webhook for grok-free-register EMAIL_MODE=custom
-// Domain: example.com
+// Domain: yanqiudesu.top
 //
 // CRITICAL: WEBHOOK_URL MUST be a hostname (not raw IP).
-// Use cloudflared tunnel: https://mailhook.example.com/webhook
+// Use cloudflared tunnel: https://mailhook.yanqiudesu.top/webhook
 import PostalMime from "postal-mime";
 
 function trim(s, max = 20000) {
