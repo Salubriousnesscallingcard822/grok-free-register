@@ -1,0 +1,31 @@
+{
+  "mode": "balanced",
+  "applied_at": "2026-07-23T17:05:20",
+  "backup": "E:\\download\\claude\\CodeX\\grok-free-register-main\\ops\\capacity-backups\\.env.bak-20260723-170520",
+  "profile": {
+    "PHYSICAL_CAP": "6",
+    "PHYSICAL_PER_CPU": "2",
+    "PHYSICAL_MEM_MB": "450",
+    "MIN_FREE_MEM_MB": "1000",
+    "T_SLOT_CAP": "16",
+    "Q_SLOT_CAP": "12",
+    "Q_PENDING_CAP": "8",
+    "T_TARGET": "8",
+    "Q_TARGET": "6",
+    "P_BATCH_MAX": "2",
+    "P_SEND_CAP": "0",
+    "S_WORKERS": "0",
+    "P_WORKERS": "0",
+    "C_WORKERS": "0",
+    "C_HOT_PAGE_POOL": "0",
+    "C_HOT_PAGE_POOL_SIZE": "0",
+    "PAGE_POST_WAIT_MS": "200",
+    "REGISTER_CAPACITY_MODE": "balanced"
+  },
+  "snapshot": {
+    "cpu": 12,
+    "total_mem_mb": 16224,
+    "free_mem_mb": 3470,
+    "mem_load_pct": 78.6
+  }
+}

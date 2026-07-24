@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grok Tool</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app-frame" id="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">G</div>
+        <div>
+          <h1>Grok Tool</h1>
+          <p>KeyHub 壳 · 统一号池</p>
+        </div>
+      </div>
+      <nav>
+        <button data-page="overview" class="active">概览</button>
+        <button data-page="pipeline">注册机</button>
+        <button data-page="pool">号池</button>
+        <button data-page="keys">统一 Key</button>
+        <button data-page="connection">连接</button>
+        <button data-page="logs">日志</button>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="pill" id="gatewayPill">检测中</div>
+        <div class="muted" id="versionLabel">v0.1.0</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow" id="pageEyebrow">OVERVIEW</div>
+          <h2 id="pageTitle">概览</h2>
+        </div>
+        <div class="top-actions">
+          <span class="refresh-dot" id="refreshDot"></span>
+          <button class="ghost" id="btnReload">刷新号池</button>
+          <button class="ghost" id="btnRefreshTokens">刷新 Token</button>
+          <button class="primary" id="btnCopyKey">复制 Master Key</button>
+        </div>
+      </header>
+
+      <div class="content">
+      <section class="page active" id="page-overview">
+        <div class="stat-grid">
+          <article class="card stat"><b id="statRemaining">-</b><span>本地请求预算</span></article>
+          <article class="card stat"><b id="statUsable">-</b><span>可用账号</span></article>
+          <article class="card stat"><b id="statTotal">-</b><span>账号总数</span></article>
+          <article class="card stat"><b id="statRequests">-</b><span>累计请求</span></article>
+        </div>
+        <div class="split">
+          <article class="card">
+            <h3>统一入口</h3>
+            <div class="endpoint"><span>Base URL</span><code id="baseUrl">-</code><button data-copy="baseUrl">复制</button></div>
+            <div class="endpoint"><span>Master Key</span><code id="masterKey">-</code><button data-copy="masterKey">复制</button></div>
+            <p class="note" id="balanceNote">加载中...</p>
+          </article>
+          <article class="card">
+            <h3>快速操作</h3>
+            <div class="action-grid">
+              <button class="action" id="btnOpenPipeline">打开注册机</button>
+              <button class="action" id="btnOpenCodexHint">给 Codex 用</button>
+              <button class="action" id="btnExportKeyhub">复制 KeyHub 参数</button>
+              <button class="action" id="btnRotateKey">轮换 Master Key</button>
+<button class="action" id="btnResetDepleted">重置耗尽标记</button>
+<button class="action" id="btnPurgeDead" title="删除 depleted / spending-limit / refresh失败 / 过期不可刷新账号">清理死号</button>
+            </div>
+            <pre class="snippet" id="quickSnippet">加载中...</pre>
+          </article>
+        </div>
+      </section>
+
+      
+      <section class="page" id="page-pipeline">
+        <div class="stat-grid pipeline-stats">
+          <article class="card stat"><b id="pipeAccounts">-</b><span>注册账号</span></article>
+          <article class="card stat"><b id="pipeSessions">-</b><span>SSO Sessions</span></article>
+          <article class="card stat"><b id="pipeOAuth">-</b><span>已转 OAuth Key</span></article>
+          <article class="card stat"><b id="pipePending">-</b><span>待转换估计</span></article>
+        </div>
+        <div class="split">
+          <article class="card">
+            <div class="section-head">
+              <h3>注册机</h3>
+              <span class="muted" id="registerState">-</span>
+            </div>
+            <p class="note" id="registerNote">注册产出 accounts / auth-sessions，不会直接进号池。</p>
+            <div class="action-grid">
+              <button class="primary" id="btnStartRegister">启动注册</button>
+              <button class="ghost" id="btnStopRegister">停止注册</button>
+            </div>
+            <pre class="snippet" id="registerLog">暂无日志</pre>
+          </article>
+          <article class="card">
+            <div class="section-head">
+              <h3>转 Key 服务</h3>
+              <span class="muted" id="authState">-</span>
+            </div>
+            <p class="note" id="authNote">把 SSO session 转成 authenticated/*.json，Grok Tool 自动导入号池。</p>
+            <div class="action-grid">
+              <button class="primary" id="btnStartAuth">启动转 Key</button>
+              <button class="ghost" id="btnStopAuth">停止转 Key</button>
+            </div>
+            <pre class="snippet" id="authLog">暂无日志</pre>
+          </article>
+        </div>
+        <article class="card" style="margin-top:12px">
+          <div class="section-head">
+            <h3>一键流水线</h3>
+            <span class="muted" id="pipelineBridgeNote">注册 -> 转 Key -> 号池 Master Key</span>
+          </div>
+          <div class="action-grid">
+            <button class="primary" id="btnStartPipeline">启动 注册+转Key</button>
+            <button class="ghost" id="btnStopPipeline">全部停止</button>
+            <button class="action" id="btnReloadAfterAuth">立刻同步号池</button>
+            <button class="action" id="btnRefreshPipeline">刷新状态</button>
+          </div>
+          <pre class="snippet" id="pipelineSnippet">加载中...</pre>
+        </article>
+      </section>
+
+      <section class="page" id="page-pool">
+        <article class="card">
+          <div class="section-head">
+            <h3>账号号池</h3>
+            <span class="muted" id="poolMeta">-</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>账号</th>
+                  <th>状态</th>
+                  <th>本地预算</th>
+                  <th>请求</th>
+                  <th>Token</th>
+                  <th>过期</th>
+                  <th>错误</th>
+                </tr>
+              </thead>
+              <tbody id="poolBody"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="page" id="page-keys">
+        <div class="split">
+          <article class="card">
+            <h3>Master Key</h3>
+            <p class="note">对外只暴露这一把。底层 OAuth token 自动轮换/刷新。</p>
+            <div class="endpoint"><span>Key</span><code id="masterKey2">-</code><button data-copy="masterKey">复制</button></div>
+            <div class="endpoint"><span>Hint</span><code id="masterHint">-</code></div>
+            <button class="primary" id="btnRotateKey2">轮换 Key</button>
+          </article>
+          <article class="card">
+            <h3>客户端配置</h3>
+            <pre class="snippet" id="clientSnippet"></pre>
+            <button class="ghost" data-copy="clientSnippet">复制配置</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="page-connection">
+        <div class="split">
+          <article class="card">
+            <h3>Codex / OpenAI 兼容</h3>
+            <div class="endpoint"><span>Base URL</span><code id="connBase">-</code><button data-copy="connBase">复制</button></div>
+            <div class="endpoint"><span>API Key</span><code id="connKey">-</code><button data-copy="connKey">复制</button></div>
+            <pre class="snippet" id="codexSnippet"></pre>
+          </article>
+          <article class="card">
+            <h3>套壳 KeyHub</h3>
+            <p class="note">本机回环 Provider 参数，是否可导入取决于 KeyHub 的本地节点策略。</p>
+            <pre class="snippet" id="keyhubSnippet"></pre>
+            <button class="primary" data-copy="keyhubSnippet">复制 Provider 参数</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="page-logs">
+        <article class="card">
+          <div class="section-head">
+            <h3>运行日志</h3>
+            <button class="ghost" id="btnRefreshLogs">刷新日志</button>
+          </div>
+          <div id="logs" class="logs"></div>
+        </article>
+      </section>
+          </div>
+    </main>
+  </div>
+  <div class="toast" id="toast" hidden></div>
+  <script src="/static/app.js"></script>
+  <div class="toast-host" id="toastHost"></div>
+  
+</body>
+</html>
