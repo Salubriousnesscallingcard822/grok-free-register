@@ -1,0 +1,12 @@
+﻿name = "your-mail-webhook"
+main = "src/index.js"
+compatibility_date = "2026-07-01"
+workers_dev = true
+
+# Secrets (set via wrangler, do NOT commit):
+#   npx wrangler secret put WEBHOOK_URL
+#   npx wrangler secret put WEBHOOK_TOKEN
+#
+# Example:
+#   WEBHOOK_URL=https://mailhook.example.com/webhook
+#   WEBHOOK_TOKEN=long-random-string
