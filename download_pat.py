@@ -1,8 +1,9 @@
 ﻿import os, re, sys, urllib.request
 from pathlib import Path
-PROXY = "http://127.0.0.1:7897"
-os.environ["HTTP_PROXY"] = PROXY
-os.environ["HTTPS_PROXY"] = PROXY
+PROXY = (os.environ.get("HTTP_PROXY") or os.environ.get("HTTPS_PROXY") or "").strip()
+if PROXY:
+    os.environ["HTTP_PROXY"] = PROXY
+    os.environ["HTTPS_PROXY"] = PROXY
 proxy = urllib.request.ProxyHandler({"http": PROXY, "https": PROXY})
 opener = urllib.request.build_opener(proxy)
 urllib.request.install_opener(opener)

@@ -18,7 +18,7 @@ param(
   [string]$What = "all",
 
   [int]$RegisterTarget = 0,          # 0 = unlimited (uses .env TARGET if 0)
-  [string]$Proxy = "",               # empty = use .env / default 127.0.0.1:7897
+  [string]$Proxy = "",               # empty = use .env / default 
   [int]$PhoneWorkers = 3,
   [double]$SyncInterval = 8,
   [switch]$ForceRegister             # kill existing grok_register.register before start
@@ -47,7 +47,8 @@ function Get-PythonMatches([string]$pattern) {
 
 function Ensure-Tunnels {
   & $Adb reverse tcp:8000 tcp:8000 2>$null | Out-Null
-  & $Adb reverse tcp:7897 tcp:7897 2>$null | Out-Null
+  # optional: reverse your local proxy port for phone path if needed
+  # & $Adb reverse tcp:PORT tcp:PORT 2>$null | Out-Null
   & $Adb reverse tcp:1080 tcp:1080 2>$null | Out-Null
   & $Adb forward tcp:8022 tcp:8022 2>$null | Out-Null
 }
@@ -75,7 +76,7 @@ function Get-ProxyUrl {
       if ($line -match '^\s*HTTP_PROXY\s*=\s*(.+)\s*$') { return $Matches[1].Trim() }
     }
   }
-  return "http://127.0.0.1:7897"
+  return ""
 }
 
 function Show-Status {
@@ -220,8 +221,8 @@ function Start-PhoneAuth {
   Ensure-Tunnels
   # push fast auth if present in pack
   $fast = Join-Path $env:USERPROFILE ".." # noop
-  $packFast = "E:\download\claude\openai-Register\logs\phone_gfr_main_pack\bin\phone_xai_auth_fast.py"
-  $startSh = "E:\download\claude\openai-Register\logs\phone_gfr_main_pack\bin\start_auth_workers.sh"
+  $packFast = if ($env:PHONE_AUTH_FAST_SCRIPT) { $env:PHONE_AUTH_FAST_SCRIPT } else { "" }
+  $startSh = if ($env:PHONE_AUTH_START_SCRIPT) { $env:PHONE_AUTH_START_SCRIPT } else { "" }
   if (Test-Path $packFast) {
     & $Adb push $packFast /sdcard/phone_xai_auth_fast.py 2>$null | Out-Null
   }
@@ -244,8 +245,8 @@ if [ -f /sdcard/start_auth_workers.sh ]; then
 fi
 # prefer fast script; fallback to existing phone_xai_auth_http.py
 export LD_LIBRARY_PATH="`${PREFIX:-/data/data/com.termux/files/usr}/lib:`${LD_LIBRARY_PATH:-}"
-export HTTP_PROXY=http://127.0.0.1:7897
-export HTTPS_PROXY=http://127.0.0.1:7897
+export HTTP_PROXY=
+export HTTPS_PROXY=
 export GROK2API_ADMIN=http://127.0.0.1:8000/api/admin/v1
 export PHONE_AUTH_SLEEP_OK=2.5
 export PHONE_AUTH_SLEEP_FAIL=6

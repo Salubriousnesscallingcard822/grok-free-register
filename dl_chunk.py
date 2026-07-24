@@ -1,9 +1,10 @@
 ﻿import os, re, sys, urllib.request
 from pathlib import Path
 
-PROXY = "http://127.0.0.1:7897"
-os.environ["HTTP_PROXY"] = PROXY
-os.environ["HTTPS_PROXY"] = PROXY
+PROXY = (os.environ.get("HTTP_PROXY") or os.environ.get("HTTPS_PROXY") or "").strip()
+if PROXY:
+    os.environ["HTTP_PROXY"] = PROXY
+    os.environ["HTTPS_PROXY"] = PROXY
 proxy = urllib.request.ProxyHandler({"http": PROXY, "https": PROXY})
 opener = urllib.request.build_opener(proxy)
 urllib.request.install_opener(opener)
@@ -11,7 +12,7 @@ urllib.request.install_opener(opener)
 pkg = sys.argv[1]
 pattern = sys.argv[2]
 limit = int(sys.argv[3]) if len(sys.argv) > 3 else 700000
-WHEELS = Path(r"E:\download\claude\CodeX\grok-free-register-main\wheels")
+WHEELS = Path(r".\wheels")
 WHEELS.mkdir(exist_ok=True)
 
 html = opener.open(f"https://pypi.org/simple/{pkg}/", timeout=30).read().decode("utf-8", "ignore")

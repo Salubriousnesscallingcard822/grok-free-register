@@ -2,8 +2,8 @@
 $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
 
-$env:HTTP_PROXY = if ($env:HTTP_PROXY) { $env:HTTP_PROXY } else { "http://127.0.0.1:7897" }
-$env:HTTPS_PROXY = if ($env:HTTPS_PROXY) { $env:HTTPS_PROXY } else { "http://127.0.0.1:7897" }
+$env:HTTP_PROXY = if ($env:HTTP_PROXY) { $env:HTTP_PROXY } else { "" }
+$env:HTTPS_PROXY = if ($env:HTTPS_PROXY) { $env:HTTPS_PROXY } else { "" }
 $env:TOKEN_MANAGER_HOST = if ($env:TOKEN_MANAGER_HOST) { $env:TOKEN_MANAGER_HOST } else { "127.0.0.1" }
 $env:TOKEN_MANAGER_PORT = if ($env:TOKEN_MANAGER_PORT) { $env:TOKEN_MANAGER_PORT } else { "8787" }
 $env:TOKEN_MANAGER_FREE_UNITS = if ($env:TOKEN_MANAGER_FREE_UNITS) { $env:TOKEN_MANAGER_FREE_UNITS } else { "100" }

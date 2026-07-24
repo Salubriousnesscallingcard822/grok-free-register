@@ -1,10 +1,10 @@
 # Expose local email webhook via cloudflared
-# Preferred hostname: mailhook.yanqiudesu.top
+# Preferred hostname: mailhook.example.com
 #
 # Named:
 #   cloudflared tunnel login
 #   cloudflared tunnel create yanqiu-mailhook
-#   cloudflared tunnel route dns yanqiu-mailhook mailhook.yanqiudesu.top
+#   cloudflared tunnel route dns yanqiu-mailhook mailhook.example.com
 #   .\start-mailhook-tunnel-windows.ps1 -Named
 # Quick:
 #   .\start-mailhook-tunnel-windows.ps1 -Quick
@@ -12,7 +12,7 @@
 param(
   [switch]$Named,
   [switch]$Quick,
-  [string]$Hostname = "mailhook.yanqiudesu.top",
+  [string]$Hostname = "mailhook.example.com",
   [string]$TunnelName = "yanqiu-mailhook",
   [int]$LocalPort = 8088
 )

@@ -13,11 +13,7 @@ def _prepare_env() -> None:
     os.environ.setdefault("GROK_TOOL_OPEN_BROWSER", "0")
     os.environ.setdefault("TOKEN_MANAGER_HOST", "127.0.0.1")
     os.environ.setdefault("TOKEN_MANAGER_PORT", "8787")
-    if "HTTP_PROXY" not in os.environ and "HTTPS_PROXY" not in os.environ:
-        os.environ.setdefault("HTTP_PROXY", "http://127.0.0.1:7897")
-        os.environ.setdefault("HTTPS_PROXY", "http://127.0.0.1:7897")
-
-
+    # Proxy is optional; set HTTP_PROXY/HTTPS_PROXY yourself if needed.
 def main() -> int:
     _prepare_env()
     here = Path(__file__).resolve().parent

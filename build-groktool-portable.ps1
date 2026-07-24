@@ -42,8 +42,8 @@ set GROK_TOOL_PORTABLE=1
 set GROK_TOOL_OPEN_BROWSER=1
 set TOKEN_MANAGER_HOST=127.0.0.1
 set TOKEN_MANAGER_PORT=8787
-if not defined HTTP_PROXY set HTTP_PROXY=http://127.0.0.1:7897
-if not defined HTTPS_PROXY set HTTPS_PROXY=http://127.0.0.1:7897
+if not defined HTTP_PROXY set HTTP_PROXY=
+if not defined HTTPS_PROXY set HTTPS_PROXY=
 echo [*] Grok Tool Portable
 echo     UI      : http://127.0.0.1:8787/
 echo     BaseURL : http://127.0.0.1:8787/v1
@@ -85,7 +85,7 @@ Folders:
   data\       <- encrypted master key + signed state
 
 Proxy:
-  Default http://127.0.0.1:7897
+  Default 
   Direct: set TOKEN_MANAGER_PROXY=
 "@
 Set-Content -Path (Join-Path $portable "README.txt") -Value $readme -Encoding UTF8
